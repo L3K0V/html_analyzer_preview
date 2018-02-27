@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/L3K0V/html_analyzer.git
-  revision: 7359a7a77d1302767dfa43e5e418e588e1927969
+  revision: 2d726a596401b95a4b6ad1711e4043af87701ae1
   specs:
     html_analyzer (0.1.0)
       nokogiri (~> 1.8)
@@ -99,7 +99,7 @@ GEM
     public_suffix (3.0.2)
     puma (3.11.2)
     rack (2.0.4)
-    rack-test (0.8.2)
+    rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rails (5.1.5)
       actioncable (= 5.1.5)
