@@ -1,5 +1,4 @@
 class ProxyController < ApplicationController
-
   skip_before_action :verify_authenticity_token
 
   def modify
@@ -21,9 +20,12 @@ class ProxyController < ApplicationController
 
   private
 
-  def get_maxage url
+  def get_maxage(url)
     require 'net/http'
     require 'uri'
+
+    # Net::HTTP requires backslash at the end
+    url << '/' unless url.end_with?('/')
 
     uri = URI(url)
     http = Net::HTTP.start(uri.host)
@@ -43,6 +45,6 @@ class ProxyController < ApplicationController
   end
 
   def proxy_params
-     params.require(:data).permit(:url, :lifetime)
+    params.require(:data).permit(:url, :lifetime)
   end
 end
