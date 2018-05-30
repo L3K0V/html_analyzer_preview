@@ -7,9 +7,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.2.0.rc1'
+gem 'rails', '~> 5.2.0'
 
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '>= 1.3.0', require: false
 
 gem 'redis'
 gem 'redis-namespace'

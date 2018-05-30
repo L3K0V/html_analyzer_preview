@@ -1,24 +1,35 @@
-# README
+# html_analyzer_preview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## API
+### Request
 
-Things you may want to cover:
+```sh
+curl -X "POST" "https://kolibri-analyzer.herokuapp.com/proxy/modify" \
+     -H 'Content-Type: application/json; charset=utf-8' \
+     -d $'{
+  "data": {
+    "url": "http://www.hrtoday.ch/de/article/portraet-renato-ferrara-hr-today"
+  }
+}'
 
-* Ruby version
+```
 
-* System dependencies
+By default the analyzer will try to honour the time to live of the result using the `Cache-Control` of the remote server. If cache is not configured on the server analyzer will cache it for 7 days.
 
-* Configuration
+User can override this setting putting `lifetime` parameter in the request.
+`lifetime` is with highest priority, so use it wisely. 
 
-* Database creation
+To specify custom lifetime of the cache:
 
-* Database initialization
+```sh
+curl -X "POST" "https://kolibri-analyzer.herokuapp.com/proxy/modify" \
+     -H 'Content-Type: application/json; charset=utf-8' \
+     -d $'{
+  "data": {
+    "url": "http://www.hrtoday.ch/de/article/portraet-renato-ferrara-hr-today",
+    "lifetime": "604800000"
+  }
+}'
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Where `lifetime` should be in milliseconds.
