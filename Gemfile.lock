@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/L3K0V/html_analyzer.git
-  revision: 94c2fca0b7f824dfd493e9dc2e702ce3e8714b9d
+  revision: 6fc6611f36196d1c931160ab859803058450d38f
   specs:
     html_analyzer (0.1.0)
       nokogiri (~> 1.8)

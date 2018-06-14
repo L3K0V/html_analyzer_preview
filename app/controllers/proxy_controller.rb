@@ -4,13 +4,14 @@ class ProxyController < ApplicationController
   def modify
     url = proxy_params['url']
     lifetime = proxy_params['lifetime']
+    type = proxy_params['type'] || 'desktop'
 
     modified = $redis.get(url)
 
     if modified.nil? || lifetime
 
       maxage = get_maxage(url)
-      modified = HtmlAnalyzer.modify(url)
+      modified = HtmlAnalyzer.modify(url, type == 'desktop' ? HtmlAnalyzer::DESKTOP_USER_AGENT : HtmlAnalyzer::PHONE_USER_AGENT)
       $redis.set(url, modified)
       $redis.expire(url, lifetime || maxage)
     end
@@ -45,6 +46,6 @@ class ProxyController < ApplicationController
   end
 
   def proxy_params
-    params.require(:data).permit(:url, :lifetime)
+    params.require(:data).permit(:url, :lifetime, :type)
   end
 end
