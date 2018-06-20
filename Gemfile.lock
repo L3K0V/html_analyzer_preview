@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/L3K0V/html_analyzer.git
-  revision: 6fc6611f36196d1c931160ab859803058450d38f
+  revision: 0364fbbd1078426927684555c4e6ab9116053ca8
   specs:
     html_analyzer (0.1.0)
       nokogiri (~> 1.8)
@@ -104,7 +104,7 @@ GEM
     msgpack (1.2.4)
     multi_json (1.13.1)
     nio4r (2.3.1)
-    nokogiri (1.8.2)
+    nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
     public_suffix (3.0.2)
     puma (3.11.4)
@@ -144,7 +144,7 @@ GEM
       actionpack (>= 4.0, < 6)
       redis-rack (>= 1, < 3)
       redis-store (>= 1.1.0, < 2)
-    redis-activesupport (5.0.4)
+    redis-activesupport (5.0.5)
       activesupport (>= 3, < 6)
       redis-store (>= 1.3, < 2)
     redis-namespace (1.6.0)
@@ -179,7 +179,7 @@ GEM
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
