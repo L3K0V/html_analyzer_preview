@@ -32,6 +32,9 @@ module ProxyHelper
 
   MOPO = proc do |document|
     content = document.search("//div[@class='offcanvas-pagecontent']").first
-    content['style'] = 'margin-left: 0%'
+    content['style'] = 'margin-left: 0%' if content
+
+    header = document.search("//header[@class='page-header' and @role='banner']").first
+    header.remove if header
   end
 end
