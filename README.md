@@ -38,16 +38,3 @@ Where `lifetime` should be in milliseconds.
 
 - `lifetime` - lifetime in milliseconds of the cached result
 - `type` - can be `mobile` or `desktop` and determine what user agent proxy should use
-
-
-## Post-processing
-
-Modify method provide way to post-process the document before return of the HTML of the page.
-You can access and modify the document passing a block and do whatever you want as a post process.
-
-```ruby
-page = HtmlAnalyzer.modify('http://mobil.mopo.de/', user_agent = HtmlAnalyzer::PHONE_USER_AGENT) do |document|
-  content = document.search("//div[@class='offcanvas-pagecontent']").first
-  content['style'] = 'margin-left: 0%'
-end
-```

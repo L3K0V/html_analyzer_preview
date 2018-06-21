@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/L3K0V/html_analyzer.git
-  revision: f71a44d57afaf706526d2fc2b38539c9075b4e6b
+  revision: 1e18c8bb08d7b9d6882e114d9ec4eda885577538
   specs:
     html_analyzer (0.1.0)
       nokogiri (~> 1.8)
@@ -194,7 +194,7 @@ GEM
     turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.11)
+    uglifier (4.1.12)
       execjs (>= 0.3.0, < 3)
     web-console (3.6.2)
       actionview (>= 5.0)
