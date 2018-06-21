@@ -1,0 +1,30 @@
+
+<div class="container">
+  <div class="columns">
+    <div class="column col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xl-8 col-6 col-mx-auto">
+      <div class="empty">
+        <div class="empty-icon">
+          <i class="icon icon-4x icon-link"></i>
+        </div>
+        <p class="empty-title h5">Embed URL</p>
+        <p class="empty-subtitle">Enter valid link below to get a processed version for embedding.</p>
+        <div class="empty-action">
+
+          <%= form_tag("/", method: "get", class: "form-group") do %>
+          <div class="input-group">
+            <%= url_field_tag(:url, "https://www.telezueri.ch/", class: "form-input input-lg", :required => true) %>
+            <%= submit_tag("Embed", class: "btn btn-primary btn-lg input-group-bt") %>
+          </div>
+
+  <label class="form-radio form-inline">
+    <%= radio_button_tag 'type', 'desktop', :checked => true %><i class="form-icon"></i> Dekstop User Agent
+  </label>
+  <label class="form-radio form-inline">
+    <%= radio_button_tag 'type', 'phone' %><i class="form-icon"></i> Phone User Agent
+  </label>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
