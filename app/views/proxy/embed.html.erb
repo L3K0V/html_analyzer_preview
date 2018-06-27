@@ -15,14 +15,8 @@
             <%= url_field_tag(:url, "https://www.telezueri.ch/", class: "form-input input-lg", :required => true) %>
             <%= submit_tag("Embed", class: "btn btn-primary btn-lg input-group-bt") %>
           </div>
-
-  <label class="form-radio form-inline">
-    <%= radio_button_tag 'type', 'desktop', :checked => true %><i class="form-icon"></i> Dekstop User Agent
-  </label>
-  <label class="form-radio form-inline">
-    <%= radio_button_tag 'type', 'mobile' %><i class="form-icon"></i> Mobile User Agent
-  </label>
           <% end %>
+          <p><strong>User agent to be used: </strong><%= request.user_agent %></p>
         </div>
       </div>
     </div>

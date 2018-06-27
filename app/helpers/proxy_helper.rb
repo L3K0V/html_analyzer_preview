@@ -10,14 +10,13 @@ module ProxyHelper
   def get_maxage(url)
     # Net::HTTP requires backslash at the end
     url << '/' unless url.end_with?('/')
-
+    
     uri = URI(url)
     http = Net::HTTP.start(uri.host)
     maxage = 7.days
 
     resp = http.head(uri.path)
     if resp['cache-control']
-      puts resp['cache-control']
       resp['cache-control'].split.each do |elem|
         maxage = elem.scan(/\d+/).first if elem.include? 'max-age='
       end

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/L3K0V/html_analyzer.git
-  revision: adb6ebc9e0dc2adc5043810543b4c27b2b71005e
+  revision: 2a5bfe2001f2cac6459e2481f5dc118d2ce37f47
   branch: master
   specs:
     html_analyzer (0.1.0)

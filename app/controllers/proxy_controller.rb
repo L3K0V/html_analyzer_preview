@@ -7,9 +7,11 @@ class ProxyController < ApplicationController
   def modify
     url = proxy_params['url']
     lifetime = proxy_params['lifetime']
-    type = proxy_params['type'] || 'desktop'
+    user_agent = request.user_agent || HtmlAnalyzer::PHONE_USER_AGENT
 
-    modified = process_page(url, lifetime, type)
+    render :modify && return unless url && url =~ URI::regexp
+
+    modified = process_page(url, lifetime, user_agent)
 
     render html: modified.html_safe
   end
@@ -17,18 +19,22 @@ class ProxyController < ApplicationController
   def embed
     url = params['url']
     lifetime = params['lifetime']
-    type = params['type'] || 'desktop'
+    user_agent = request.user_agent || HtmlAnalyzer::PHONE_USER_AGENT
 
-    render :embed && return unless url
+    render :embed && return unless url && url =~ URI::regexp
 
-    modified = process_page(url, lifetime, type)
+    modified = process_page(url, lifetime, user_agent)
 
     render html: modified.html_safe
   end
 
+  def clear
+    render html: helpers.tag.strong($redis.flushall) 
+  end
+
   private
 
-  def process_page(url, lifetime, type)
+  def process_page(url, lifetime, user_agent)
     modified = $redis.get(url)
 
     if modified.nil? || lifetime
@@ -37,7 +43,7 @@ class ProxyController < ApplicationController
 
       post_proc = get_url_post_proc(url)
 
-      modified = HtmlAnalyzer.modify(url, type == 'desktop' ? HtmlAnalyzer::DESKTOP_USER_AGENT : HtmlAnalyzer::PHONE_USER_AGENT) do |doc|
+      modified = HtmlAnalyzer.modify(url, user_agent) do |doc|
         post_proc.call(doc) if post_proc
       end
 
@@ -49,7 +55,7 @@ class ProxyController < ApplicationController
   end
 
   def proxy_params
-    params.require(:data).permit(:url, :lifetime, :type)
+    params.require(:data).permit(:url, :lifetime, :user_agent)
   end
 
   def allow_iframe
