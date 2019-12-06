@@ -14,7 +14,7 @@ gem 'bootsnap', '>= 1.3.0', require: false
 gem 'redis'
 gem 'redis-namespace'
 gem 'redis-rails'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '~> 4.1'
 gem 'coffee-rails', '~> 4.2'
